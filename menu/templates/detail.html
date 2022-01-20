@@ -18,6 +18,8 @@
         {% else %}
         <p style="color: red;">Нет В наличии</p>
         {% endif %}
+        <a class="btn btn-warning" href="{% url 'update' product_id %}" role="button">Update</a>
+        <a class="btn btn-danger" href="{% url 'delete' product_id %}" role="button">Delete</a>
     </div>
 
 {% endblock %}
