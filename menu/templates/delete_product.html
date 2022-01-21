@@ -5,7 +5,7 @@
   <form method="post" >
     {% csrf_token %}
 <button type="submit" class="btn btn-danger">Yes</button>
-    <a class="btn btn-secondary" href="{% url 'detail' product_id %}" role="button">NO</a>
+    <a class="btn btn-secondary" href="{% url 'detail' product.id %}" role="button">NO</a>
   </form>
 
 {% endblock %}

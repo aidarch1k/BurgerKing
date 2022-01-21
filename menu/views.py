@@ -10,25 +10,29 @@ def index(request):
     categories = Category.objects.all()
     return render(request, 'index.html', {'categories': categories})
 
+
 def product_list(request, slug):
     products = Product.objects.filter(category__slug=slug)
-    return render(request,'list.html', {'products': products})
+    return render(request, 'list.html', {'products': products})
+
 
 def product_detail(request, product_id):
     # product = Product.objects.get(pk=product_id)
     product = get_object_or_404(Product, pk=product_id)
     return render(request, 'detail.html', locals())
 
+
 def product_create(request):
     if request.method == 'POST':
         print(request.POST)
-        product_form = CreateProductForm(request.POST,request.FILES)
+        product_form = CreateProductForm(request.POST, request.FILES)
         if product_form.is_valid():
             product = product_form.save()
             return redirect('detail', product.id)
     else:
         product_form = CreateProductForm()
     return render(request, 'create_product.html', locals())
+
 
 def product_update(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -47,7 +51,9 @@ def product_delete(request, product_id):
         return redirect('list', slug)
     return render(request, 'delete_product.html', locals())
 
+
 """ Cart Views"""
+
 
 @login_required(login_url="/users/login")
 def cart_add(request, id):

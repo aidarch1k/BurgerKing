@@ -1,13 +1,14 @@
 from django.urls import path
 from menu.views import *
+from .class_views import *
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('product-list/<str:slug>/', product_list, name='list'),
-    path('product/<int:product_id>/', product_detail, name='detail'),
-    path('product/create/', product_create, name='create'),
-    path('product/update/<int:product_id>/', product_update, name='update'),
-    path('product/delete/<int:product_id>/', product_delete, name='delete'),
+    path('', CategoryListView.as_view(), name='index'),
+    path('product-list/<str:slug>/', ProductListView.as_view(), name='list'),
+    path('product/<int:product_id>/', ProductDetailView.as_view(), name='detail'),
+    path('product/create/', ProductCreateView.as_view(), name='create'),
+    path('product/update/<int:product_id>/', ProductUpdateView.as_view(), name='update'),
+    path('product/delete/<int:product_id>/', ProductDeleteView.as_view(), name='delete'),
 
 
     #card paths
