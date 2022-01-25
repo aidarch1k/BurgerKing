@@ -18,8 +18,10 @@
         {% else %}
         <p style="color: red;">Нет В наличии</p>
         {% endif %}
+        {% if request.user.is_superuser %}
         <a class="btn btn-warning" href="{% url 'update' product.id %}" role="button">Update</a>
         <a class="btn btn-danger" href="{% url 'delete' product.id %}" role="button">Delete</a>
+        {% endif %}
     </div>
 
 {% endblock %}
