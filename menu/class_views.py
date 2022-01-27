@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .permissions import IsAdminCheckMixin
 from .forms import CreateProductForm, UpdateProductForm
 from .models import Category, Product
-
+from cart.cart import Cart
 
 class SearchListView(ListView):
     model = Product
